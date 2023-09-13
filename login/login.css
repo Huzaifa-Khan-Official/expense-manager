@@ -1,0 +1,89 @@
+body {
+    overflow-x: hidden;
+    background-color: #003981;
+}
+
+.container {
+    background-color: white;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 3%;
+    border: none;
+}
+
+.forget {
+    text-decoration: none;
+    color: #003981;
+}
+
+.btn {
+    background-color: #003981;
+    border-radius: 0.8vw !important;
+    height: 6vh;
+    font-size: larger;
+    letter-spacing: 1px;
+}
+
+.btnDiv {
+    border: 1px solid rgba(0, 0, 0, 0.285);
+    border-radius: 1.5vw;
+}
+
+.loginBtnDiv,
+.signbtnDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7vh;
+}
+
+.loginBtnDiv button,
+.signbtnDiv button {
+    border: none;
+    background-color: transparent;
+}
+
+.loginBtnDiv {
+    background-color: #003981;
+    border-radius: 1.5vw;
+}
+
+.loginBtnDiv button {
+    color: white;
+}
+
+.loginBtnDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signbtnDiv:hover {
+    background-color: rgb(230, 230, 230);
+    border-radius: 1.5vw;
+}
+
+.row {
+    margin-left: 0vw;
+    margin-right: 0vw;
+}
+
+.loginBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 90vw;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    .container {
+        width: 70vw;
+    }
+}

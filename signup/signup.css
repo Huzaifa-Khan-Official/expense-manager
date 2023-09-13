@@ -1,0 +1,80 @@
+body {
+    overflow-x: hidden;
+    background-color: #003981;
+}
+
+.container {
+    background-color: white;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 3%;
+    border: none;
+}
+
+.btn {
+    background-color: #003981;
+    border-radius: 0.8vw !important;
+    height: 6vh;
+    font-size: larger;
+    letter-spacing: 1px;
+}
+
+.row {
+    margin-left: 0vw;
+    margin-right: 0vw;
+}
+
+.btnDiv {
+    border: 1px solid rgba(0, 0, 0, 0.285);
+    border-radius: 1.5vw;
+}
+
+
+.loginBtnDiv,
+.signbtnDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7vh;
+}
+
+.loginBtnDiv button,
+.signbtnDiv button {
+    border: none;
+    background-color: transparent;
+}
+
+.signbtnDiv {
+    background-color: #003981;
+    border-radius: 1.5vw;
+}
+
+.signbtnDiv button {
+    color: white;
+}
+
+.signupBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginBtnDiv:hover {
+    background-color: rgb(230, 230, 230);
+    border-radius: 1.5vw;
+}
+
+
+@media (max-width: 576px) {
+    .container {
+        width: 90vw;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    .container {
+        width: 70vw;
+    }
+}
