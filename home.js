@@ -16,75 +16,47 @@ function logout() {
 
 var itemUniqueId = items.length + 1;
 
-let singleItemName;
-let singleItemAmount;
-let singleItemDate;
+
 
 // add expense function
 function addExpense() {
 
-   
-    Swal.fire(
-        {
-            title: 'ADD ITEM',
-            input: 'text',
-            inputLabel: 'Item Name:',
-            inputPlaceholder: 'Type your text here',
-            showCancelButton: true,
-            inputValidator: (value) => {
-                if (!value) {
-                    return 'You need to enter some text!';
-                }
-            }
+
+    var itemNameInp = document.getElementById("itemName");
+    var itemAmountInp = document.getElementById("itemAmount");
+    var expenseDateInp = document.getElementById("expenseDate");
+    var itemCategoryInp = document.getElementById("itemCategory");
+
+    var singleItemName = itemNameInp.value;
+    var singleItemAmount = itemAmountInp.value;
+    var singleItemDate = expenseDateInp.value;
+    var singleItemCategory = itemCategoryInp.value;
+
+    if ((singleItemName == "") || (singleItemAmount == "") || (singleItemDate == "") || (singleItemCategory == "")) {
+        document.querySelector(".errrorDiv p").innerHTML = "Please fill in all fields before adding the expense.";
+    } else {
+
+
+
+        var singleItem = {
+            itemId: itemUniqueId,
+            singleItemName,
+            singleItemAmount,
+            singleItemDate,
+            singleItemCategory
         }
-    ).then((result) => {
-        if (result.isConfirmed) {
-            singleItemName = result.value;
-
-            Swal.fire(
-                {
-                    title: 'ADD ITEM',
-                    input: 'number',
-                    inputLabel: 'Item Amount:',
-                    inputPlaceholder: 'Type your amount here',
-                    showCancelButton: true,
-                    inputValidator: (value) => {
-                        if (!value) {
-                            return 'You need to enter some amount!';
-                        }
-                    }
-                }
-            ).then((amount) => {
-                if (amount.isConfirmed) {
-                    singleItemAmount = amount.value;
-
-                    var singleItemDate = prompt("Enter Expense Date: ");
-                    var singleItemCategory = prompt("Enter Item Category: ");
-        
-                    var singleItem = {
-                        itemId: itemUniqueId,
-                        singleItemName,
-                        singleItemAmount,
-                        singleItemDate,
-                        singleItemCategory
-                    }
-                    items.push(singleItem);
-                    localStorage.setItem("items", JSON.stringify(items));
-            
-            
-            
-            
-                    itemUniqueId = parseInt(itemUniqueId) + 1;
-                    getalldata();
-                }
-            });
-
-        }
+        items.push(singleItem);
+        localStorage.setItem("items", JSON.stringify(items));
 
 
 
-    });
 
+        itemUniqueId = parseInt(itemUniqueId) + 1;
+        getalldata();
+
+
+        $('#expenseModal').modal('hide');
+    }
 }
 
 
@@ -143,7 +115,7 @@ function getalldata() {
             itemId.innerHTML = singleItemmap.itemId;
             itemName.innerHTML = singleItemmap.singleItemName;
             amount.innerHTML = singleItemmap.singleItemAmount;
-            expenseDate.innerHTML = singleItemmap.singleItemAmount;
+            expenseDate.innerHTML = singleItemmap.singleItemDate;
             category.innerHTML = singleItemmap.singleItemCategory;
 
         })
@@ -154,7 +126,6 @@ function getalldata() {
 }
 
 getalldata();
-
 
 
 

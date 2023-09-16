@@ -45,6 +45,11 @@
     margin-left: 1vw; 
 }
 
+
+.errrorDiv p {
+    color: red;
+    float: left;
+}
 @media (max-width: 430px) {
     .btnsDiv {
         display: block;
