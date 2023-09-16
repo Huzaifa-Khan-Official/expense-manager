@@ -6,14 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>
-
-    </style>
     <title>Home</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -28,6 +26,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Features</a>
                     </li>
+                </ul>
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link greet" href="#"></a>
                     </li>
@@ -38,6 +38,49 @@
             </div>
         </div>
     </nav>
+    <!-- end navbar -->
+    <!-- container -->
+    <div class="container mt-5">
+        <!-- top heading -->
+        <div class="heading">
+            <h1>Personal Expense Manager</h1>
+        </div>
+        <!-- end top heading -->
+        <!-- filterbtn Div -->
+        <div class="btnsDiv mt-3">
+            <div class="button mt-4">
+                <button class="btn btn-primary p-2" onclick="addExpense()">Add Expense</button>
+            </div>
+            <div class="filterDiv">
+                <div class="searchinp mt-4">
+                    <input type="text" id="search" class="form-control p-2">
+                </div>
+                <div class="button mt-4 ms-4">
+                    <button class="btn p-2 filterBtn">Filter</button>
+                </div>
+            </div>
+        </div>
+        <!-- end filterbtn Div -->
+        <!-- tables -->
+        <div class="table-responsive">
+            <table class="table mt-5 ">
+                <thead>
+                    <tr>
+                        <th scope="col">Item Id</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Expense Date</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Edit/Delete</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- end container -->
     <script src="home.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

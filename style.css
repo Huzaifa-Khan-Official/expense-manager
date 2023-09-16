@@ -1,0 +1,58 @@
+#navbarNav{
+    justify-content: space-between;
+}
+
+.container {
+    width: 100vw;
+}
+
+.navbar-nav {
+    margin-right: 5vw !important;
+}
+
+.button>.btn {
+    background-color: rgb(7, 89, 182);
+    color: white;
+}
+
+.button>.btn:hover {
+    background-color: rgb(1, 120, 255);
+    color: white;
+}
+
+.btnsDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnsDiv button {
+    padding: 1vh 2.5vw !important;
+}
+
+.filterDiv {
+    display: flex;
+}
+
+.filterBtn {
+    background-color: lightseagreen !important;
+}
+
+#editDeleteBtn {
+    display: flex;
+}
+
+#editDeleteBtn button {
+    margin-left: 1vw; 
+}
+
+@media (max-width: 430px) {
+    .btnsDiv {
+        display: block;
+    }
+}
+
+@media (max-width: 768px){
+    .container {
+        max-width: 800px;
+    }
+}
