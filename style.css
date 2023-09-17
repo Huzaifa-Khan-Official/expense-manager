@@ -29,14 +29,6 @@
     padding: 1vh 2.5vw !important;
 }
 
-.filterDiv {
-    display: flex;
-}
-
-.filterBtn {
-    background-color: lightseagreen !important;
-}
-
 #editDeleteBtn {
     display: flex;
 }
@@ -45,6 +37,13 @@
     margin-left: 1vw; 
 }
 
+.btn-danger {
+    margin-bottom: 2.5vh;
+}
+
+.btn-success {
+    margin-bottom: 2.5vh;
+}
 
 .errrorDiv p {
     color: red;

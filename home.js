@@ -1,6 +1,12 @@
 var currentUser = JSON.parse(localStorage.getItem('currentUser')) || "";
 var items = JSON.parse(localStorage.getItem("items")) || []; // geting items from storage
 
+
+let indexNo;
+
+
+
+
 if (currentUser === "") {
     location.href = "./signup/signup.html";
 }
@@ -14,12 +20,12 @@ function logout() {
 }
 
 
-var itemUniqueId = items.length + 1;
 
 
 
 // add expense function
 function addExpense() {
+    var itemUniqueId = items.length + 1;
 
 
     var itemNameInp = document.getElementById("itemName");
@@ -34,6 +40,9 @@ function addExpense() {
 
     if ((singleItemName == "") || (singleItemAmount == "") || (singleItemDate == "") || (singleItemCategory == "")) {
         document.querySelector(".errrorDiv p").innerHTML = "Please fill in all fields before adding the expense.";
+        setTimeout(() => {
+            document.querySelector(".errrorDiv p").innerHTML = "";
+        }, 4000);
     } else {
 
 
@@ -55,18 +64,28 @@ function addExpense() {
         getalldata();
 
 
+
+        itemNameInp.value = "";
+        itemAmountInp.value = "";
+        expenseDateInp.value = "";
+        itemCategoryInp.value = "";
+
+
+
         $('#expenseModal').modal('hide');
+        totalFunc();
     }
 }
 
 
 function getalldata() {
     var items = JSON.parse(localStorage.getItem('items')) || "";
+    var itemUniqueId = items.length + 1;
     try {
         var tableGroupDivider = document.querySelector(".table-group-divider"); //table-group-divider
         tableGroupDivider.innerHTML = "";
 
-        items.map(singleItemmap => {
+        items.map((singleItemmap, i) => {
 
 
 
@@ -85,7 +104,11 @@ function getalldata() {
 
             editDeleteTd.setAttribute("id", "editDeleteBtn") // set id for edit/delete td
             editbtn.setAttribute("class", "btn btn-success") // set class for edit button
+            editbtn.setAttribute("onclick", `editTr(${i})`) // set function for edit button
+            editbtn.setAttribute("data-bs-toggle", "modal")
+            editbtn.setAttribute("data-bs-target", "#editModal") // open modal for editing
             deleteBtn.setAttribute("class", "btn btn-danger") // set class for edit button
+            deleteBtn.setAttribute("onclick", `delTr(${i})`) // set function for delete button
 
 
             editDeleteTd.appendChild(editbtn); // append editbtn to edit/delete td
@@ -112,7 +135,7 @@ function getalldata() {
 
 
 
-            itemId.innerHTML = singleItemmap.itemId;
+            itemId.innerHTML = i + 1;
             itemName.innerHTML = singleItemmap.singleItemName;
             amount.innerHTML = singleItemmap.singleItemAmount;
             expenseDate.innerHTML = singleItemmap.singleItemDate;
@@ -128,5 +151,84 @@ function getalldata() {
 getalldata();
 
 
+function totalFunc() {
+    var total = 0;
+    var totalAmount = document.querySelector("#totalAmount");
+
+    items.forEach(element => {
+        var amount = parseInt(element.singleItemAmount);
+        total += amount;
+    });
+    totalAmount.innerHTML = total;
+}
+
+totalFunc()
 
 
+function delTr(index) {
+    items.splice(index, 1);
+    localStorage.setItem("items", JSON.stringify(items));
+    getalldata();
+    totalFunc();
+
+}
+
+function editTr(index) {
+    var itemNameInp = document.getElementById("editItemName");
+    var itemAmountInp = document.getElementById("editItemAmount");
+    var expenseDateInp = document.getElementById("editExpenseDate");
+    var itemCategoryInp = document.getElementById("editItemCategory");
+
+    var singleItemName = itemNameInp.value;
+    var singleItemAmount = itemAmountInp.value;
+    var singleItemDate = expenseDateInp.value;
+    var singleItemCategory = itemCategoryInp.value;
+
+    itemNameInp.value = items[index].singleItemName;
+    itemAmountInp.value = items[index].singleItemAmount;
+    expenseDateInp.value = items[index].singleItemDate
+    itemCategoryInp.value = items[index].singleItemCategory;
+
+
+    indexNo = index;
+}
+
+function editExpense() {
+    var itemUniqueId = items.length + 1;
+
+    var itemNameInp = document.getElementById("editItemName");
+    var itemAmountInp = document.getElementById("editItemAmount");
+    var expenseDateInp = document.getElementById("editExpenseDate");
+    var itemCategoryInp = document.getElementById("editItemCategory");
+
+    var singleItemName = itemNameInp.value;
+    var singleItemAmount = itemAmountInp.value;
+    var singleItemDate = expenseDateInp.value;
+    var singleItemCategory = itemCategoryInp.value;
+
+    if ((singleItemName == "") || (singleItemAmount == "") || (singleItemDate == "") || (singleItemCategory == "")) {
+        document.querySelector(".errrorDiv p").innerHTML = "Please fill in all fields before adding the expense.";
+        setTimeout(() => {
+            document.querySelector(".errrorDiv p").innerHTML = "";
+        }, 4000);
+    } else {
+
+
+        var singleItem = {
+            itemId: itemUniqueId,
+            singleItemName,
+            singleItemAmount,
+            singleItemDate,
+            singleItemCategory
+        }
+
+
+
+        items.splice(indexNo, 1, singleItem);
+        localStorage.setItem("items", JSON.stringify(items));
+        getalldata();
+        totalFunc();
+
+        $('#editModal').modal('hide');
+    }
+}

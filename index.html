@@ -49,15 +49,8 @@
         <!-- filterbtn Div -->
         <div class="btnsDiv mt-3">
             <div class="button mt-4">
-                <button class="btn btn-primary p-2"  data-bs-toggle="modal" data-bs-target="#expenseModal">Add Expense</button>
-            </div>
-            <div class="filterDiv">
-                <div class="searchinp mt-4">
-                    <input type="text" id="search" class="form-control p-2">
-                </div>
-                <div class="button mt-4 ms-4">
-                    <button class="btn p-2 filterBtn">Filter</button>
-                </div>
+                <button class="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#expenseModal">Add
+                    Expense</button>
             </div>
         </div>
         <!-- end filterbtn Div -->
@@ -66,7 +59,7 @@
             <table class="table mt-5 ">
                 <thead>
                     <tr>
-                        <th scope="col">Item Id</th>
+                        <th scope="col">S No.</th>
                         <th scope="col">Item Name</th>
                         <th scope="col">Amount</th>
                         <th scope="col">Expense Date</th>
@@ -77,6 +70,16 @@
                 <tbody class="table-group-divider">
 
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="col">Total:</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td id="totalAmount"></td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
 
@@ -92,9 +95,11 @@
                     <!-- modal body -->
                     <div class="modal-body">
                         <label class="form-label">Item Name:</label>
-                        <input class="form-control form-control-lg" type="text" placeholder="Enter item name" id="itemName">
+                        <input class="form-control form-control-lg" type="text" placeholder="Enter item name"
+                            id="itemName">
                         <label class="form-label mt-3">Item Amount:</label>
-                        <input class="form-control form-control-lg" type="number" placeholder="Enter item amount" id="itemAmount">
+                        <input class="form-control form-control-lg" type="number" placeholder="Enter item amount"
+                            id="itemAmount">
                         <label class="form-label mt-3">Expense Date:</label>
                         <input class="form-control form-control-lg" type="date" id="expenseDate">
                         <label class="form-label mt-3">Select Catogory</label>
@@ -114,11 +119,56 @@
                     <!-- end modal body -->
                     <!-- modal end buttons -->
                     <div class="modal-footer">
-                        
+
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary" onclick="addExpense()">Add Expense</button>
                     </div>
                     <!-- end modal end buttons -->
+                </div>
+            </div>
+        </div>
+
+        
+
+        <!--edit Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="editModalLabel">Edit Expense</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-- modal body -->
+                    <div class="modal-body">
+                        <label class="form-label">Item Name:</label>
+                        <input class="form-control form-control-lg" type="text" placeholder="Edit item name"
+                            id="editItemName">
+                        <label class="form-label mt-3">Item Amount:</label>
+                        <input class="form-control form-control-lg" type="number" placeholder="Edit item amount"
+                            id="editItemAmount">
+                        <label class="form-label mt-3">Expense Date:</label>
+                        <input class="form-control form-control-lg" type="date" id="editExpenseDate">
+                        <label class="form-label mt-3">Select Catogory</label>
+                        <select class="form-select" id="editItemCategory">
+                            <option selected disabled>Open this select menu</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Home & Garden">Home & Garden</option>
+                            <option value="Motors">Motors</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Health & Beauty">Health & Beauty</option>
+                        </select>
+                        <div class="errrorDiv mt-3">
+                            <p></p>
+                        </div>
+                    </div>
+                    <!-- end modal body -->
+                    <!-- modal end buttons -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="editExpense()">Edit Expense</button>
+                    </div>
+                    <!--end modal end buttons -->
                 </div>
             </div>
         </div>
